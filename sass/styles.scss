@@ -1,0 +1,122 @@
+@use "sass:selector";
+@use "sass:color";
+
+@import './functions';
+@import './theme';
+
+body {
+  --primary: #{$primary};
+
+  font-family: $font-family;
+  font-weight: lighter;
+  margin: 0;
+  padding: 0;
+}
+.alt {
+  --primary: #{$primary-alt};
+}
+
+p { line-height: 1.5; }
+
+nav {
+  ul { 
+    padding: 0;
+    text-align: right;
+    background: #f0f0f0;
+  }
+  li {
+    display: inline-block;
+    list-style-type: none;
+  }
+  a {
+    padding: 3ex 2ch;
+    display: inline-block;
+    font-weight: 500;
+  }
+}
+
+$base-color: #B7DD00;
+@for $i from 1 through 3 {
+  nav li:nth-of-type(#{$i}) {
+    a:link, a:visited {
+      color: adjust-hue($base-color, $degrees: 120 * $i)
+    }
+  }
+}
+
+main.favorites {
+  display: flex;
+  justify-content: space-around;
+}
+
+input {
+  border: solid 1px $neutral;
+  border-radius: 3px;
+  display: block;
+  font-size: 1rem;
+  padding: 1ex 1ch;
+  &:hover, &:focus { border-style: dotted; }
+  &:invalid {
+    color: $danger;
+    border-color: $danger;
+    & ~ .error {
+      visibility: visible;
+    }
+  }
+}
+
+
+.card {
+  margin: 1rem;
+  max-width: 52ch;
+  border: solid 1px;
+  display: flex;
+  flex-direction: column;
+  .content {
+    padding: 1rem;
+    text-align: justify;
+  }
+  h2 {
+    background: lightgray;
+    padding: 2rem;
+    margin: 0;
+    text-align: center;
+  }
+  .actions {
+    margin-top: auto;
+    margin-bottom: 1rem;
+    padding: 0 1rem;
+    text-align: right;
+  }
+  button {
+    padding: 1ex 2ch;
+    border: none;
+    font-size: 1rem;
+    &:hover { cursor: pointer; }
+    &:hover, &:focus {
+      outline: dotted 1px $primary;
+      outline-offset: 2px;
+    }
+  }
+}
+
+// .coffee {
+  //   @extend .card;
+  // @include card-colors(cadetblue);
+// }
+// .cupcake {
+//   @extend .card;
+//   @include card-colors(plum);
+// }
+// .bacon {
+//   @extend .card;
+//   @include card-colors(gold);
+// }
+
+$cards: (".coffee": cadetblue, ".cupcake": plum, ".bacon": gold);
+@each $selector, $color in $cards {
+  #{$selector} {
+    @include card-colors($color);
+    @extend .card;
+  }
+}

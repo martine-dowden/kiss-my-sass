@@ -1,0 +1,30 @@
+@import './theme';
+
+@mixin card-colors($myColor) {
+  .header {
+    background: $myColor;
+  }
+  button {
+    $button-text: #ffffff;
+    $button-background: complement($myColor);
+    @while(contrast-checker($button-text, $button-background) == "false") {
+      $button-text: darken($button-text, 1%);
+    }
+    color: $button-text;
+    background-color: $button-background;
+  }
+}
+
+@function contrast-checker($text, $background) {
+  @if ($text == black) { @return "true"; }
+  $r: (max(red($text), red($background))) - (min(red($text), red($background)));
+  $g: (max(green($text), green($background))) - (min(green($text), green($background)));
+  $b: (max(blue($text), blue($background))) - (min(blue($text), blue($background)));
+  $sum-rgb: $r + $g + $b;
+  // @debug $text "+" $background "=" $sum-rgb;
+  @if $sum-rgb < 400 {
+    @return "false";
+  } @else {
+    @return "true";
+  }
+}

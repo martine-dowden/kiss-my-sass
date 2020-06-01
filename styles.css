@@ -1,0 +1,133 @@
+body {
+  --primary: #0A3F7F;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: lighter;
+  margin: 0;
+  padding: 0;
+}
+
+.alt {
+  --primary: #CF649A;
+}
+
+p {
+  line-height: 1.5;
+}
+
+nav ul {
+  padding: 0;
+  text-align: right;
+  background: #f0f0f0;
+}
+nav li {
+  display: inline-block;
+  list-style-type: none;
+}
+nav a {
+  padding: 3ex 2ch;
+  display: inline-block;
+  font-weight: 500;
+}
+
+nav li:nth-of-type(1) a:link, nav li:nth-of-type(1) a:visited {
+  color: #00b7dd;
+}
+
+nav li:nth-of-type(2) a:link, nav li:nth-of-type(2) a:visited {
+  color: #dd00b7;
+}
+
+nav li:nth-of-type(3) a:link, nav li:nth-of-type(3) a:visited {
+  color: #b7dd00;
+}
+
+main.favorites,
+main.login {
+  display: flex;
+  justify-content: space-around;
+}
+
+.error { 
+  visibility: hidden;
+  color: #993955;
+  margin-top: 1ex;
+}
+input {
+  border: solid 1px #cecece;
+  border-radius: 3px;
+  display: block;
+  font-size: 1rem;
+  padding: 1ex 1ch;
+}
+input:hover, input:focus {
+  border-style: dotted;
+}
+input:invalid {
+  color: #993955;
+  border-color: #993955;
+}
+input:invalid ~ .error {
+  visibility: visible;
+}
+
+.card, .bacon, .cupcake, .coffee {
+  margin: 1rem;
+  max-width: 52ch;
+  border: solid 1px;
+  display: flex;
+  flex-direction: column;
+}
+.card .content, .bacon .content, .cupcake .content, .coffee .content {
+  padding: 1rem;
+  text-align: justify;
+}
+.card h2, .bacon h2, .cupcake h2, .coffee h2 {
+  background: lightgray;
+  padding: 2rem;
+  margin: 0;
+  text-align: center;
+}
+.card .actions, .bacon .actions, .cupcake .actions, .coffee .actions {
+  margin-top: auto;
+  margin-bottom: 1rem;
+  padding: 0 1rem;
+  text-align: right;
+}
+.card button, .bacon button, .cupcake button, .coffee button {
+  padding: 1ex 2ch;
+  border: none;
+  font-size: 1rem;
+}
+.card button:hover, .bacon button:hover, .cupcake button:hover, .coffee button:hover {
+  cursor: pointer;
+}
+.card button:hover, .bacon button:hover, .cupcake button:hover, .coffee button:hover, .card button:focus, .bacon button:focus, .cupcake button:focus, .coffee button:focus {
+  outline: dotted 1px #0A3F7F;
+  outline-offset: 2px;
+}
+
+.coffee .header {
+  background: cadetblue;
+}
+.coffee button {
+  color: #ffffff;
+  background-color: #a0615f;
+}
+
+.cupcake .header {
+  background: plum;
+}
+.cupcake button {
+  color: #2e2e2e;
+  background-color: #a0dda0;
+}
+
+.bacon .header {
+  background: gold;
+}
+.bacon button {
+  color: #ffffff;
+  background-color: #0028ff;
+}
+
+/*# sourceMappingURL=styles.css.map */
